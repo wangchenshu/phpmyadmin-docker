@@ -1,0 +1,19 @@
+version: "3"
+services:
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        networks:
+           - local-net
+        ports:
+            - 8080:80
+        environment:
+            - MYSQL_USERNAME=root
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - PMA_HOST=mysql
+networks:
+  local-net:
+    external:
+      name: local-net
+volumes:
+  db-data:
+
